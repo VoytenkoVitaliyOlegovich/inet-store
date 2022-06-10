@@ -1,8 +1,15 @@
 'use strict'
+<<<<<<< HEAD
 
 const path = require('path')
 const AutoLoad = require('@fastify/autoload')
 
+=======
+require('dotenv').config()
+const path = require('path')
+const AutoLoad = require('@fastify/autoload')
+const mysql = require('@fastify/mysql')
+>>>>>>> add crud and nuxt admin
 
 
 module.exports = async function (fastify, opts) {
@@ -27,10 +34,20 @@ module.exports = async function (fastify, opts) {
         options: Object.assign({}, opts)
     })
 
+<<<<<<< HEAD
     fastify.register(require('@fastify/mysql'), {
         connectionString: 'mysql://root:root@localhost/1plus1'
     })
 
 
+=======
+    fastify.register(mysql, {
+        connectionString: `mysql://${process.env.MYSQL_USER}:${process.env.MYSQL_USER}@${process.env.MYSQL_URL}/${process.env.MYSQL_DATABASE}`
+    })
+
+    fastify.register(require('@fastify/cors'), {
+        // put your options here
+    })
+>>>>>>> add crud and nuxt admin
 
 }
