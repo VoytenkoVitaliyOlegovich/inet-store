@@ -1,15 +1,10 @@
 'use strict'
 
 
-const path = require('path')
-const AutoLoad = require('@fastify/autoload')
-
-
 require('dotenv').config()
 const path = require('path')
 const AutoLoad = require('@fastify/autoload')
 const mysql = require('@fastify/mysql')
-
 
 
 module.exports = async function (fastify, opts) {
@@ -33,13 +28,6 @@ module.exports = async function (fastify, opts) {
         dir: path.join(__dirname, 'routes'),
         options: Object.assign({}, opts)
     })
-
-
-    fastify.register(require('@fastify/mysql'), {
-        connectionString: 'mysql://root:root@localhost/1plus1'
-    })
-
-
 
     fastify.register(mysql, {
         connectionString: `mysql://${process.env.MYSQL_USER}:${process.env.MYSQL_USER}@${process.env.MYSQL_URL}/${process.env.MYSQL_DATABASE}`
