@@ -4,7 +4,7 @@
 require('dotenv').config()
 const path = require('path')
 const AutoLoad = require('@fastify/autoload')
-const mysql = require('@fastify/mysql')
+
 
 
 module.exports = async function (fastify, opts) {
@@ -29,13 +29,25 @@ module.exports = async function (fastify, opts) {
         options: Object.assign({}, opts)
     })
 
-    fastify.register(mysql, {
-        connectionString: `mysql://${process.env.MYSQL_USER}:${process.env.MYSQL_USER}@${process.env.MYSQL_URL}/${process.env.MYSQL_DATABASE}`
-    })
 
     fastify.register(require('@fastify/cors'), {
         // put your options here
     })
 
+
+    fastify.register(require('@fastify/jwt'), {
+        secret: process.env.JWT_SECRET,
+        // verify: {
+        //     extractToken: (req) => {
+        //        return req.body.token
+        //     }
+        // }
+    })
+
+
+
+    // if(process.env.NODE_ENV = 'development') {
+    //     fastify.log.info(fastify.printRoutes())
+    // }
 
 }
