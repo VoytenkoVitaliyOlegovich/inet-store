@@ -3,8 +3,6 @@
 const {singUser} = require("../../../models/users/service");
 const {failResponse, sendToken} = require("../../../server/response/utils")
 
-const {schemaAuth} = require("../../../models/users/schema/auth");
-
 module.exports = async function (fastify, opts) {
 
     fastify.post('/', (request, reply) => {
