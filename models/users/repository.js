@@ -45,6 +45,17 @@ async function findAllUsers(limit, offset) {
 
 }
 
+async function putUser(user) {
+
+    const [users] = await connection.query(`UPDATE users SET ? WHERE id = ${user.id}`, {
+        email: user.email,
+        name: user.name,
+        password: user.password,
+    })
+
+    return users[0] ?? undefined;
+
+}
 
 
 module.exports = {
@@ -52,5 +63,6 @@ module.exports = {
     findOneById,
     findAllUsers,
     create,
-    singIn
+    singIn,
+    putUser
 }

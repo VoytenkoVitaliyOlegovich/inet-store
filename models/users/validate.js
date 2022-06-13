@@ -5,8 +5,8 @@ function validateCreate(email, password) {
     if (!validator.isEmail(email)) {
         throw new Error('Email not valid');
     }
-    if (!password.length > 2) {
-        throw new Error('Password must be > 2 char');
+    if (password.length < 4) {
+        throw new Error('Password must be > 4 char');
     }
 }
 

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="container col-3">
+    <div class="container  col-md-6 col-lg-4 col-xl-3 col-12">
+      <h1>Sign in</h1>
       <b-form  v-if="show" @submit="onSubmit">
         <b-form-group
           id="input-group-1"

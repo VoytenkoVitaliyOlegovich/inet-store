@@ -1,6 +1,6 @@
 <template>
 
-  <div class="bg-dark vh-100 border-bottom-0 col-md-3 col-xl-2 col-12 pt-2 sticky-top">
+  <div class="side-bar bg-dark vh-100 border-bottom-0 col-md-3 col-xl-2 col-12 pt-2 sticky-top">
 
     <nav class="d-md-block ">
       <ul class="nav nav-pills flex-column mb-auto">

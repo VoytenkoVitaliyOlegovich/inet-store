@@ -1,0 +1,15 @@
+.side-bar {
+  .nav-link {
+    margin-bottom: 10px;
+    border: 1px solid var(--light);
+    color: var(--light);
+    &:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+  }
+  .nuxt-link-exact-active {
+    color: var(--cyan);
+    border-color: var(--cyan);
+  }
+}

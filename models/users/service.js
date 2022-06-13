@@ -1,6 +1,6 @@
 const {validateCreate, validateSignIn, validLimitOffset} = require('./validate')
 const hash = require('../../modules/cryptography/hash');
-const {findOneByEmail, create, singIn, findAllUsers, findOneById} = require("./repository");
+const {findOneByEmail, create, singIn, findAllUsers, findOneById, putUser} = require("./repository");
 
 
 const SALT_ROUNDS = 10;
@@ -39,10 +39,22 @@ async function getUser(id) {
 
 }
 
+async function editUser(user) {
+    validateCreate(user.email, user.password)
+
+    const pass = user.password
+
+    user.password = await hash.passwordHash(pass, SALT_ROUNDS)
+
+    return putUser(user)
+
+}
+
 
 module.exports = {
     createUser,
     singUser,
     getUsers,
-    getUser
+    getUser,
+    editUser
 }
