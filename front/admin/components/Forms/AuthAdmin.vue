@@ -60,8 +60,7 @@ export default {
       //   this.$auth.$storage.setLocalStorage('token', response.token)
       // })
       try {
-        const response = await this.$auth.loginWith('local', { data: this.form })
-        console.log(response)
+        await this.$auth.loginWith('local', { data: this.form })
       } catch (err) {
         console.log(err)
       }

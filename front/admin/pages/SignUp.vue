@@ -3,12 +3,13 @@
     <div class="container">
       <h1>Registration</h1>
     </div>
-    <AddUser/>
+    <FormsAddUser/>
   </div>
 </template>
 
 <script>
 export default {
+  auth: false,
   name: "RegisterPage"
 }
 </script>

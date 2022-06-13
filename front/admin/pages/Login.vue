@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AuthAdmin/>
+    <FormsAuthAdmin/>
   </div>
 </template>
 

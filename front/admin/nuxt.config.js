@@ -56,13 +56,13 @@ export default {
         token: {
           property: 'token',
           global: true,
-          // required: true,
-          // type: 'Bearer'
+          required: true,
+          type: 'Bearer',
+          maxAge: 3600,
         },
         //TODO ПРОВЕРИТЬ СКОЛЬКО РАБОТАЕТ ТОКЕН НА СЕРВЕРЕ
-        maxAge: 3600,
         user: {
-          property: ['id', 'name', 'email'],
+          property: 'user',
           autoFetch: true
         },
         endpoints: {

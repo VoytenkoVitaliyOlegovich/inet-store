@@ -41,13 +41,13 @@
         class="mt-3"
         :show="dismissCountDown"
         dismissible
-        variant="danger"
+        :variant="variant"
         @dismissed="dismissCountDown=0"
         @dismiss-count-down="countDownChanged"
       >
         <p>{{responseText}}</p>
         <b-progress
-          variant="danger"
+          :variant="variant"
           :max="dismissSecs"
           :value="dismissCountDown"
           height="4px"
@@ -75,26 +75,28 @@ export default {
       dismissSecs: 4,
       dismissCountDown: 0,
       showDismissibleAlert: false,
-      responseText: ''
+      responseText: '',
+      variant:''
     }
   },
   methods: {
     countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown
     },
-    onAlert(){
+    onAlert(variant){
+      this.variant = variant
       this.showDismissibleAlert = true
       this.dismissCountDown = this.dismissSecs
     },
     onSubmit(event) {
       event.preventDefault()
       this.$axios.$post('/users', this.form
-      ).then((response) => {
-
+      ).then( (response) => {
+        this.onAlert('success')
+        this.responseText = 'user created'
       }).catch((e)=> {
-        // this.responseText = JSON.parse(e.request.response).massage
-        this.responseText = 'error'
-        this.onAlert()
+        this.responseText = e.response.data.message
+        this.onAlert('danger')
       })
     },
   }
