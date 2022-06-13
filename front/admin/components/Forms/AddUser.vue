@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="container col-4">
+    <div class="container col-3">
+
+      <h1>Registration</h1>
+
       <b-form  v-if="show" @submit="onSubmit">
         <b-form-group
           id="input-group-1"
@@ -90,7 +93,7 @@ export default {
     },
     onSubmit(event) {
       event.preventDefault()
-      this.$axios.$post('/users', this.form
+      this.$axios.$post('/auth/signup', this.form
       ).then( (response) => {
         this.onAlert('success')
         this.responseText = 'user created'

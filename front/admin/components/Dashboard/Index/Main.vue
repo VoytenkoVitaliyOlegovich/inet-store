@@ -1,11 +1,11 @@
 <template>
   <div>
-    <DashboardIndexMain/>
+    index dashboard main
   </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: "MainIndex"
 }
 </script>

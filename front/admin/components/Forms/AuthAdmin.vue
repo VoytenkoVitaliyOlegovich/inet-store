@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container col-4">
+    <div class="container col-3">
       <b-form  v-if="show" @submit="onSubmit">
         <b-form-group
           id="input-group-1"

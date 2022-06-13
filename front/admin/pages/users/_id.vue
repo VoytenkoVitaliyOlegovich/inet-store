@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <DashboardIndexMain/>
+  <div class="col-9">
+    <DashboardUsersUserEdit/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: "UserEdit"
 }
 </script>

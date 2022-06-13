@@ -1,7 +1,7 @@
 'use strict'
-const {parseGetJwt} = require('../../../server/request/middleware/jwt')
-const {findOneById} = require("../../../models/users/repository");
-const {userSerialize} = require("../../../collections/user");
+const {parseGetJwt} = require('../../../../server/request/middleware/jwt')
+const {findOneById} = require("../../../../models/users/repository");
+const {userSerialize} = require("../../../../collections/user");
 
 module.exports = async function (fastify, opts) {
 

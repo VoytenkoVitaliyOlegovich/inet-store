@@ -22,7 +22,7 @@ export default {
 
 
   router: {
-    middleware: ['auth']
+    middleware: ['auth'],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -51,6 +51,7 @@ export default {
     '@nuxtjs/auth-next'
   ],
   auth: {
+    cookie: false,
     strategies: {
       local: {
         token: {
@@ -66,9 +67,9 @@ export default {
           autoFetch: true
         },
         endpoints: {
-          login: { url: '/signin', method: 'post' },
+          login: { url: '/auth/signin', method: 'post' },
           logout: { url: '/auth/logout', method: 'post' },
-          user: { url: '/me', method: 'get' }
+          user: { url: '/auth/me', method: 'get' }
         }
       }
     }

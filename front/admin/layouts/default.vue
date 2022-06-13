@@ -1,7 +1,13 @@
 <template>
   <div>
     <HeaderMain />
-    <Nuxt keep-alive/>
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap2">
+        <DashboardSideBar v-if="$auth.loggedIn"/>
+        <Nuxt keep-alive/>
+      </div>
+    </div>
+
   </div>
 </template>
 

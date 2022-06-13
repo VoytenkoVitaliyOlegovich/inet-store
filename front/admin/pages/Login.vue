@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="col-12">
     <FormsAuthAdmin/>
   </div>
 </template>
 
 <script>
 export default {
-  auth: false,
+
   name: "LoginPanel",
 }
 </script>

@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <div class="container">
-      <h1>Registration</h1>
-    </div>
+  <div class="col-12">
+
     <FormsAddUser/>
   </div>
 </template>

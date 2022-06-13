@@ -6,7 +6,6 @@ const path = require('path')
 const AutoLoad = require('@fastify/autoload')
 
 
-
 module.exports = async function (fastify, opts) {
     // Place here your custom code!
 
@@ -39,11 +38,25 @@ module.exports = async function (fastify, opts) {
         secret: process.env.JWT_SECRET,
         // verify: {
         //     extractToken: (req) => {
-        //        return req.body.token
+        //        return req.headers.token
         //     }
         // }
     })
 
+    const authRoutse = {
+        '/api/auth/signin': true,
+        '/api/auth/signup': true
+    }
+    fastify.addHook("onRequest", async (request, reply) => {
+        try {
+            const path = request.routerPath
+            if (!authRoutse[path]) {
+                await request.jwtVerify()
+            }
+        } catch (err) {
+            reply.send(err)
+        }
+    })
 
 
     // if(process.env.NODE_ENV = 'development') {

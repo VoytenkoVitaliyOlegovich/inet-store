@@ -1,7 +1,7 @@
 'use strict'
 
-const {singUser} = require("../../../models/users/service");
-const {failResponse, sendToken} = require("../../../server/response/utils")
+const {singUser} = require("../../../../models/users/service");
+const {failResponse, sendToken} = require("../../../../server/response/utils")
 
 module.exports = async function (fastify, opts) {
 

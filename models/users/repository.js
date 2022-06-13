@@ -37,9 +37,20 @@ async function findOneById(id) {
 
 }
 
+async function findAllUsers(limit, offset) {
+
+    const [users] = await connection.query(`SELECT * FROM users LIMIT ${offset}, ${limit}`);
+
+    return users ?? undefined;
+
+}
+
+
+
 module.exports = {
     findOneByEmail,
     findOneById,
+    findAllUsers,
     create,
     singIn
 }

@@ -1,5 +1,6 @@
 const validator = require("validator");
 const bcrypt = require('bcrypt')
+
 function validateCreate(email, password) {
     if (!validator.isEmail(email)) {
         throw new Error('Email not valid');
@@ -18,7 +19,14 @@ function validateSignIn(email, passwordHash, password) {
     }
 }
 
+function validLimitOffset(limit, offset) {
+    if(limit < 0 || offset < 0 ) {
+        throw new Error('offset or limit must be > 0 ');
+    }
+}
+
 module.exports = {
     validateCreate,
-    validateSignIn
+    validateSignIn,
+    validLimitOffset
 }
