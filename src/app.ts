@@ -18,7 +18,6 @@ export default async (fastify: FastifyInstance, opts: FastifyServerOptions) => {
     users(fastify, opts)
 
 
-
     fastify.register(cors, {
         // put your options here
     })

@@ -1,10 +1,14 @@
 'use strict'
 import {FastifyInstance, FastifyServerOptions} from "fastify";
 
-import {getUsers, getUser, editUser} from "../../../models/users/service"
+import {getUsers, getUser, editUser, deleteUser} from "../../../models/users/service"
 import {usersSerialize, userEditSerialize, userSerialize} from "../../../collections/user"
 import {Static} from "@sinclair/typebox";
-import {schemaGetUser, schemaPaginateUsers, schemaUpdateUser} from "../../../server/request/schema/users";
+import {
+    schemaGetUser,
+    schemaPaginateUsers,
+    schemaUpdateUser
+} from "../../../server/request/schema/users";
 
 export default async function (fastify: FastifyInstance, opts: FastifyServerOptions) {
     const pathApi: string = '/api/users'
@@ -45,7 +49,20 @@ export default async function (fastify: FastifyInstance, opts: FastifyServerOpti
         return undefined
     });
 
-    fastify.delete('/users/:id', (request, reply) => {
+    //delete
+    fastify.delete<{Params: Static<typeof schemaGetUser.params>}>(pathApi + '/:id', {
+        schema: schemaGetUser
+    }, (request, reply) => {
+        // if(request.headers.id){
+        //
+        // }
+        const {id} = request.params
+
+        return deleteUser(id)
+
+        // return undefined
+
+
 
     })
 }

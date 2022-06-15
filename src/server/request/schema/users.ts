@@ -36,4 +36,8 @@ export const schemaLoginUser = {
     }))
 }
 
-export const schemaDeleteUser = Type.Object({})
+export const schemaDeleteUser = {
+    params: Type.Strict(Type.Object({
+        id: Type.String(),
+    }))
+}

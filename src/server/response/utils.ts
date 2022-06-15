@@ -8,3 +8,7 @@ export function failResponse (reply:FastifyReply, message:string) {
 export function sendToken(reply:FastifyReply, message:string) {
     reply.send({token: message})
 }
+
+export function deleteUser(reply:FastifyReply, message:string) {
+    reply.send({user_delete: message})
+}

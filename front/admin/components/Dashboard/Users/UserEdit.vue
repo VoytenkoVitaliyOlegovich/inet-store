@@ -38,8 +38,10 @@
         ></b-form-input>
       </b-form-group>
       <b-button type="submit" variant="primary">Submit</b-button>
-
+      <b-button @click="deleteUser(user.email)" type="text" variant="primary">Delete</b-button>
     </b-form>
+
+
 
 
     <b-card class="mt-3" header="Form Data Result">
@@ -86,6 +88,17 @@ export default {
         .then((response) => {
           console.log(response);
           this.$fetch()
+        })
+        .catch((e) => {
+          console.log(e);
+        })
+    },
+    deleteUser(id) {
+
+      this.$axios.$delete(`/users/${this.$route.params.id}`)
+        .then((response) => {
+          console.log(response)
+          this.$router.push('/users')
         })
         .catch((e) => {
           console.log(e);

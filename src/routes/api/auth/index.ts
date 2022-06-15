@@ -9,16 +9,23 @@ import {failResponse, sendToken} from "../../../server/response/utils";
 import {parseGetJwt} from "../../../server/request/middleware/jwt";
 import {findOneById} from "../../../models/users/repository";
 import {userEditSerialize, userSerialize} from "../../../collections/user";
+import dayjs from "dayjs";
+
+
+const pathApi: string = '/api/auth'
+const timestamps:string = dayjs().format("YYYY-MM-DD HH:mm:ss")
 
 export default async function (fastify: FastifyInstance, opts: FastifyServerOptions) {
 
-    const pathApi: string = '/api/auth'
     //signup
     fastify.post<{ Body: Static<typeof schemaCreateUser.body> }>(pathApi + '/signup', {
         schema: schemaCreateUser
     }, async (request, reply) => {
+
         const {name, password, email} = request.body
-        return createUser(name, password, email);
+
+        return createUser(name, password, email, timestamps);
+
     });
 
     //sign
@@ -47,7 +54,7 @@ export default async function (fastify: FastifyInstance, opts: FastifyServerOpti
 
 
         if (user) {
-            return userEditSerialize(user)
+            return userSerialize(user)
         } else {
             reply.statusCode = 403
             reply.send('user not found')

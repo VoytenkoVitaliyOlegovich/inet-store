@@ -1,12 +1,12 @@
 import {validateCreate, validateSignIn, validLimitOffset} from './validate'
 import passwordHash from '../../modules/cryptography/hash'
-import {findOneByEmail, create, findAllUsers, findOneById, putUser} from "./repository"
+import {findOneByEmail, create, findAllUsers, findOneById, putUser, deleteU} from "./repository"
 import UserRaw from "./userRaw";
 
 
 const SALT_ROUNDS = 10;
 
-export async function createUser(name:string, plainPassword:string, email:string) {
+export async function createUser(name: string, plainPassword: string, email: string, created_at:string) {
     validateCreate(email, plainPassword)
 
     const user = await findOneByEmail(email);
@@ -17,7 +17,7 @@ export async function createUser(name:string, plainPassword:string, email:string
 
     const hashPassword = await passwordHash(plainPassword, SALT_ROUNDS)
 
-    return create(name, hashPassword, email);
+    return create(name, hashPassword, email, created_at);
 }
 
 export async function singUser(email:string, password:string): Promise<UserRaw> {
@@ -55,4 +55,8 @@ export async function editUser(email:string, password:string, id:number, name:st
 
     return putUser(email, password, id, name)
 
+}
+
+export async function deleteUser(id:number) {
+    return deleteU(id)
 }
