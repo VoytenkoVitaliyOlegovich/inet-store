@@ -5,9 +5,9 @@ import fastifyJwt, { FastifyJWTOptions } from '@fastify/jwt'
 import {FastifyInstance, FastifyServerOptions} from "fastify";
 
 import root from "./routes/root";
-import auth from "./routes/api/auth/index";
-import users from "./routes/api/users/index";
-import {Static, Type} from "@sinclair/typebox";
+import auth from "./routes/api/auth";
+import users from "./routes/api/users";
+
 import {schemaCreateUser, schemaPaginateUsers} from "./server/request/schema/users";
 
 dotenv.config()
